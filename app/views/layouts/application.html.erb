@@ -1,29 +1,22 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= content_for(:title) || "Search Practice" %></title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="application-name" content="Search Practice">
-    <meta name="mobile-web-app-capable" content="yes">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<body>
+  <header class="navbar">
+    <ul class="navbar-list">
+      <% if logged_in? %>
+        <li><%= link_to '新規投稿', new_post_path %></li>
+        <li><%= link_to 'ユーザー一覧', mypages_path %></li>
+        <li><%= link_to '投稿一覧', posts_path %></li>
+        <li><%= button_to 'ログアウト', logout_path, method: :delete %></li>
+      <% else %>
+        <li><%= link_to 'サインアップ', signup_path %></li>
+        <li><%= link_to 'ログイン', login_path %></li>
+      <% end %>
+    </ul>
+  </header>
 
-    <%= yield :head %>
+  <main class="container">
+    <% if notice %><p style="color: green;"><%= notice %></p><% end %>
+    <% if alert %><p style="color: red;"><%= alert %></p><% end %>
 
-    <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
-    <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
-
-    <link rel="icon" href="/icon.png" type="image/png">
-    <link rel="icon" href="/icon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/icon.png">
-
-    <%# Includes all stylesheet files in app/assets/stylesheets %>
-    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
-  </head>
-
-  <body>
     <%= yield %>
-  </body>
-</html>
+  </main>
+</body>

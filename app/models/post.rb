@@ -4,11 +4,11 @@ class Post < ApplicationRecord
   validates :title, presence: true
   validates :content, presence: true
 
-  scope :search, ->(keyword) {
-    if keyword.present?
-      where('title LIKE ? OR content LIKE ?', "%#{keyword}%", "%#{keyword}%")
-    else
-      all 
-    end
-  }
+  def self.ransackable_attributes(auth_object = nil)
+    ["title", "content"]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    ["user"]
+  end
 end

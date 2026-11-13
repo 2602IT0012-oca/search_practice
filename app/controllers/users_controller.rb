@@ -1,8 +1,5 @@
+# app/controllers/users_controller.rb
 class UsersController < ApplicationController
-  def index
-    @users = User.search(params[:keyword])
-  end
-
   def new
     @user = User.new
   end
@@ -11,8 +8,16 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      redirect_to mypage_path, notice: "サインアップしました"
+      redirect_to posts_path, notice: '登録が完了しました'
     else
-      render :new, status: :unproessble_entity
+      render :new, status: :unprocessable_entity
+    end
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
 end
+

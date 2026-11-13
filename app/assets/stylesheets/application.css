@@ -1,10 +1,91 @@
-/*
- * This is a manifest file that'll be compiled into application.css.
- *
- * With Propshaft, assets are served efficiently without preprocessing steps. You can still include
- * application-wide styles in this file, but keep in mind that CSS precedence will follow the standard
- * cascading order, meaning styles declared later in the document or manifest will override earlier ones,
- * depending on specificity.
- *
- * Consider organizing styles into separate files for maintainability.
- */
+/* 全体設定 */
+body {
+  margin: 0;
+  font-family: sans-serif;
+}
+
+/* オレンジ色のヘッダーバー */
+.navbar {
+  background-color: #ff9900;
+  padding: 12px 0;
+  text-align: center;
+}
+
+.navbar-list {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  display: inline-flex;
+  gap: 60px;
+  align-items: center;
+}
+
+.navbar-list a,
+.navbar-list button {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 14px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font-family: inherit;
+}
+
+.navbar-list a:hover,
+.navbar-list button:hover {
+  text-decoration: underline;
+}
+
+/* メインコンテンツの中央寄せコンテナ */
+.container {
+  max-width: 700px;
+  margin: 30px auto;
+  padding: 0 20px;
+}
+
+/* 検索フォーム */
+.search-form-group {
+  margin-bottom: 8px;
+}
+
+.search-form-group label {
+  display: inline-block;
+  width: 80px;
+  font-size: 14px;
+}
+
+.search-form-group label.short-label {
+  width: auto;
+  margin-right: 8px;
+}
+
+/* 一覧テーブル */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.data-table.compact-table {
+  width: 260px;
+}
+
+.data-table th,
+.data-table td {
+  border: 1px solid #666666;
+  padding: 6px 10px;
+  font-size: 14px;
+}
+
+.data-table th {
+  text-align: center;
+  background-color: #f9f9f9;
+}
+
+/* テーブル右端のリンク列（枠線なし） */
+.data-table td.action-cell {
+  border: none;
+  white-space: nowrap;
+  padding-left: 12px;
+}

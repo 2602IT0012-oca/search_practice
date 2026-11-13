@@ -1,2 +1,37 @@
-<h1>Posts#index</h1>
-<p>Find me in app/views/posts/index.html.erb</p>
+<h2>投稿一覧</h2>
+
+<h3>投稿検索</h3>
+<%= search_form_for @q, url: posts_path do |f| %>
+  <div class="search-form-group">
+    <%= f.label :title_cont, 'タイトル' %>
+    <%= f.search_field :title_cont %>
+  </div>
+  <div class="search-form-group">
+    <%= f.label :content_cont, '投稿内容' %>
+    <%= f.search_field :content_cont %>
+  </div>
+  <div>
+    <%= f.submit '検索' %>
+  </div>
+<% end %>
+
+<br>
+
+<h3>一覧</h3>
+<table class="data-table">
+  <thead>
+    <tr>
+      <th style="width: 25%;">タイトル</th>
+      <th style="width: 75%;">投稿内容</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @posts.each do |post| %>
+      <tr>
+        <td><%= post.title %></td>
+        <td><%= post.content %></td>
+        <td class="action-cell"><%= link_to '投稿詳細', post_path(post) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
