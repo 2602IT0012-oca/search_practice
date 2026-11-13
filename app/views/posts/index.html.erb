@@ -1,28 +1,25 @@
-<h2>投稿一覧</h2>
+<h1>投稿一覧</h1>
 
-<h3>投稿検索</h3>
-<%= search_form_for @q, url: posts_path do |f| %>
+<h2>投稿検索</h2>
+<%= search_form_for @q do |f| %>
   <div class="search-form-group">
-    <%= f.label :title_cont, 'タイトル' %>
+    <%= f.label :title_cont, "タイトル" %>
     <%= f.search_field :title_cont %>
   </div>
   <div class="search-form-group">
-    <%= f.label :content_cont, '投稿内容' %>
+    <%= f.label :content_cont, "投稿内容" %>
     <%= f.search_field :content_cont %>
   </div>
-  <div>
-    <%= f.submit '検索' %>
-  </div>
+  <%= f.submit "検索" %>
 <% end %>
 
-<br>
-
-<h3>一覧</h3>
+<h2>一覧</h2>
 <table class="data-table">
   <thead>
     <tr>
-      <th style="width: 25%;">タイトル</th>
-      <th style="width: 75%;">投稿内容</th>
+      <th>タイトル</th>
+      <th>投稿内容</th>
+      <th style="border: none; background: none;"></th>
     </tr>
   </thead>
   <tbody>
@@ -30,7 +27,7 @@
       <tr>
         <td><%= post.title %></td>
         <td><%= post.content %></td>
-        <td class="action-cell"><%= link_to '投稿詳細', post_path(post) %></td>
+        <td class="action-cell"><%= link_to "投稿詳細", post_path(post) %></td>
       </tr>
     <% end %>
   </tbody>
